@@ -3,8 +3,10 @@ var grid = document.getElementById("grid"),
   boxes = document.getElementsByClassName("box"),
   player1 = document.getElementById("player1"),
   player2 = document.getElementById("player2"),
-  turn = document.getElementById("turn");
+  turn = document.getElementById("turn"),
+  clicking = document.getElementById("clicking");
 
+//setting up initial variables
 var counter = "O",
   xArray = [],
   oArray = [],
@@ -19,17 +21,19 @@ var counter = "O",
           [3,5,7]
   ],
   score = { player1: 0, player2: 0};
-
+// even listener on grid
 grid.addEventListener("click", function (e) {
+  clicking.play();
   if (e.target.className === "box" && counter === "O") {
     e.target.innerHTML = "<img src=\"img/O.jpg\"/>";
+    // occupy-O is for no duplication of targeting
     e.target.className += " occupy-O"
     e.target.style.backgroundColor = "red";
     oArray.push(parseInt(e.target.id));
     xArray.sort();
     testWinner(oArray, "player1");
     counter = "X";
-    turn.innerHTML = "player 2"
+    turn.innerHTML = "Player 2"
 
   }
   else if (e.target.className === "box" && counter === "X") {
@@ -40,7 +44,7 @@ grid.addEventListener("click", function (e) {
     xArray.sort();
     testWinner(xArray, "player2");
     counter = "O";
-    turn.innerHTML = "player 1"
+    turn.innerHTML = "Player 1"
   }
 });
 
@@ -66,7 +70,10 @@ var testWinner = function (array, player) {
           oArray = [];
           xArray = [];
         }
-        if (array.length === 5) {
+      });
+  });
+        if (array.length === 5 && oArray.length > 0) {
+          alert("We have a Draw! Cats Game");
           for (var i = 0; i < boxes.length; i ++) {
             boxes[i].innerHTML = "";
             boxes[i].className = "box";
@@ -75,6 +82,4 @@ var testWinner = function (array, player) {
           oArray = [];
           xArray = [];
         }
-      });
-  });
 };
