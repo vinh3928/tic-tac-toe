@@ -1,0 +1,61 @@
+/** {*/
+  /*border: 1px green solid;*/
+/*}*/
+
+content {
+  background-color: green;
+  margin: 0 0 0 20%;
+}
+
+.box {
+  background-color: yellow;
+  border: 1px black solid;
+  height: 200px;
+  width: 200px;
+  display: inline-block;
+  float: left;
+  transition: 
+  -webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 1s; 
+  transition: width 2s, height 2s, background-color, transform 1s; 
+}
+
+.box:active {
+  transform: scale(-1, -1);
+}
+
+.box img {
+  height: 200px;
+  width: 200px;
+}
+
+content .box:nth-child(3n+4) {
+  clear: left;
+
+}
+
+h1 {
+  text-align: center;
+}
+
+.wrapper {
+  margin: 0 auto;
+}
+
+.score h2 {
+  display: inline-block;
+}
+
+div {
+  display: inline-block;
+}
+
+.score p {
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.player, .turn {
+  display: block;
+}
+
